@@ -1,9 +1,42 @@
 {
+
+  "name": "markeddown",
+
+  "version": "1.0.0",
+
+  "main": "src/main.ts",
+
+  "scripts": {
+
+    "dev": "tsx src/main.ts",
+
+    "build": "tsc",
+
+    "watch": "tsx watch src/main.js"
+
+  },
+
   "dependencies": {
+
     "mammoth": "^1.12.0",
+
     "pdfjs-dist": "^6.0.227",
+
     "tesseract.js": "^7.0.0",
+
     "turndown": "^7.2.4",
+
     "turndown-plugin-gfm": "^1.0.2"
+
+  },
+
+  "devDependencies": {
+
+    "tsx": "^4.22.4",
+
+    "watch": "^0.13.0"
+
   }
+
 }
+
