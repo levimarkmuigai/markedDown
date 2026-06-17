@@ -1,7 +1,7 @@
 import { createWorker } from "tesseract.js";
 import { logger } from "../utils/logger";
 
-export async function imageToString(imageBuffers: ArrayBuffer[]):
+export async function toMarkdown(imageBuffers: ArrayBuffer[]):
   Promise<string> {
   const worker = await createWorker('eng');
   logger.info('worker initialized');
