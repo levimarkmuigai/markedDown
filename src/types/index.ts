@@ -1,4 +1,4 @@
-type FileType = 'pdf' | 'docx' | 'image' | 'unsupported';
+export type FileType = 'pdf' | 'docx' | 'image' | 'unsupported';
 
 export interface Input {
   file: File;
@@ -7,9 +7,13 @@ export interface Input {
 
 export interface Result {
   markdown: string;
-  type: string[];
+  warning: string[];
 }
 
 export interface Convertor {
   convert(input: Input): Promise<Result>;
 }
+
+export type Outcome =
+  | { ok: true; result: Result } | { ok: false; error: string }
+  ;

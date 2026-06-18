@@ -1,8 +1,9 @@
 import { createWorker } from "tesseract.js";
 import { logger } from "../utils/logger";
+import { Outcome } from "../types/index";
 
-export async function toMarkdown(imageBuffers: ArrayBuffer[]):
-  Promise<string> {
+export async function convertImage(imageBuffers: ArrayBuffer[]):
+  Promise<Outcome> {
   const worker = await createWorker('eng');
   logger.info('worker initialized');
 
@@ -18,12 +19,23 @@ export async function toMarkdown(imageBuffers: ArrayBuffer[]):
         .trim();
 
       result += `## Image Section ${i + 1}\n\n${cleanedText}\n\n--\n\n`;
+
+      return {
+        ok: true,
+        result: {
+          markdown: result.trim(),
+          warning: [''],
+        }
+      }
     }
   } catch (error) {
     logger.error('OCR failed: ', error);
-    throw error;
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message :
+        'image conversion failed'
+    }
   } finally {
     await worker.terminate();
   }
-  return result.trim();
 }
