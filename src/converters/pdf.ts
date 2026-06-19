@@ -7,8 +7,10 @@ import { logger } from "../utils/logger";
 const CONCURRENCY_LIMIT = 15;
 const turndownService = new TurndownService();
 
-export async function convertPdf(buffer: ArrayBuffer): Promise<Outcome> {
+export async function convertPdf(file: File): Promise<Outcome> {
   try {
+    const buffer = await file.arrayBuffer();
+
     const pdfDocument = await getDocument({ data: new Uint8Array(buffer) })
       .promise;
 

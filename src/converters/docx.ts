@@ -4,8 +4,10 @@ import { gfm } from "turndown-plugin-gfm";
 import { logger } from "../utils/logger";
 import { Outcome } from "../types/index";
 
-export async function convertDocx(buffer: ArrayBuffer): Promise<Outcome> {
+export async function convertDocx(file: File): Promise<Outcome> {
   try {
+    const buffer = await file.arrayBuffer();
+
     const options = { convertImage: images.dataUri };
 
     const htmlResult = await convertToHtml({ arrayBuffer: buffer }, options);

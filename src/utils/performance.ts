@@ -1,21 +1,22 @@
-export async function performanceMonitor<T>(
+import { Outcome } from "../types/index";
+import { logger } from "./logger";
+
+export async function performanceMonitor(
   taskName: string,
-  fn: () => Promise<T>): Promise<number> {
+  fn: () => Promise<Outcome>):
+  Promise<{ durationMs: number, outcome: Outcome }> {
   const start = performance.now();
 
   try {
-    await fn();
+    const outcome = await fn();
     const end = performance.now();
 
     const durationMs = Math.floor(end - start);
 
-    return durationMs;
+    return { durationMs, outcome };
   } catch (error) {
-    const end = performance.now();
-
-    console.error(`${taskName}
-                  failed in ${Math.floor(end - start)}Ms`);
-
+    const durationMs = Math.floor(performance.now() - start);
+    logger.error(`${taskName} failed in ${durationMs}ms`);
     throw error;
   }
 }
