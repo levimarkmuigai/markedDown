@@ -10,6 +10,15 @@ export interface Result {
   warning: string[];
 }
 
+export interface BatchInput {
+  files: File[];
+}
+
+export interface BatchResult {
+  files: File[];
+  outcomes: Outcome[];
+}
+
 export interface Convertor {
   convert(input: Input): Promise<Result>;
 }
