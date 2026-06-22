@@ -6,7 +6,8 @@ export interface Input {
 }
 
 export interface Result {
-  markdown: string;
+  content: string;
+  fileName: string;
   warning: string[];
 }
 

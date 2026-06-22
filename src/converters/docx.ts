@@ -12,11 +12,14 @@ export async function convertDocx(file: File): Promise<Outcome> {
 
     const htmlResult = await convertToHtml({ arrayBuffer: buffer }, options);
 
+    const fileName = file.name.split('.')[0];
+
     const result = htmlToMarkdown(htmlResult.value);
     return {
       ok: true,
       result: {
-        markdown: result,
+        content: result,
+        fileName,
         warning: [''],
       }
     };

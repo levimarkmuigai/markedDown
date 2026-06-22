@@ -11,17 +11,19 @@ export async function convertImage(file: File):
 
     const { data } = await worker.recognize(file);
 
+    const fileName = file.name.split('.')[0];
+
     const cleanedText = data.text
       .replace(/\n{3,}/g, '\n\n')
       .replace(/ {2,}/g, '')
       .trim();
 
-    const markdown = `## Image\n\n${cleanedText}\n\n--\n\n`;
-
+    const content = `## Image\n\n${cleanedText}\n\n--\n\n`;
     return {
       ok: true,
       result: {
-        markdown,
+        content,
+        fileName,
         warning: [''],
       }
     }

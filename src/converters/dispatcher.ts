@@ -13,7 +13,8 @@ export async function dispatch(input: Input): Promise<Outcome> {
         () => convertPdf(input.file)
       );
 
-      logger.info(`pdf -> markdown took: ${pdfResult.durationMs}ms`);
+      logger.info(
+        `pdf -> markdown took: ${pdfResult.durationMs}ms`);
       return pdfResult.outcome;
     };
 
@@ -23,7 +24,8 @@ export async function dispatch(input: Input): Promise<Outcome> {
         () => convertDocx(input.file)
       );
 
-      logger.info(`docx -> markdown took: ${docxResult.durationMs}ms`);
+      logger.info(
+        `docx -> markdown took: ${docxResult.durationMs}ms`);
       return docxResult.outcome;
     };
 
@@ -32,7 +34,8 @@ export async function dispatch(input: Input): Promise<Outcome> {
         'image -> markdown',
         () => convertImage(input.file)
       );
-      logger.info(`image -> markdown took: ${imageResult.outcome}ms`);
+      logger.info(
+        `image -> markdown took: ${imageResult.outcome}ms`);
       return imageResult.outcome;
     };
 

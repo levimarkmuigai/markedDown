@@ -27,10 +27,14 @@ export async function convertPdf(file: File): Promise<Outcome> {
       allResults.push(...chunkResults);
     }
 
+    const fileName: string = file.name.split('.')[0];
+
     return {
       ok: true,
       result: {
-        markdown: allResults.join('\n\n'), warning: ['']
+        content: allResults.join('\n\n'),
+        fileName,
+        warning: ['']
       }
     }
   } catch (error) {
