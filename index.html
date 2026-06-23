@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>markedDown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;
+    500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="/src/style.css" rel="stylesheet">
+  </head>
+  <body class="bg-bg flex flex-col justify-center items-center gap-4
+     px-4 py-8">
+    <header>
+      <h1 class="font-default text-sm font-bold text-theme tracking-widest">MARKED-DOWN</h1>
+    </header>
+
+    <div>
+      <p class="font-body text-sm text-light-ink">
+      This free online document/image converter allows you to change your <br>
+      files into markdown and copy the generated text.</p>
+
+      <p class="font-body text-sm text-light-ink">
+      Upload up to 5 documents/images.Wait for conversion to finish.</p>
+
+      <p class="font-body text-sm text-light-ink">
+      Download your results in the queue.</p>
+    </div>
+
+    <!--upload-div-->
+    <div class="bg-primary w-[800px] h-[275px] flex flex-col justify-center
+       items-center gap-4 border border-border rounded-[24px]">
+      <!--btn-group-->
+      <div class="flex flex-row justify-center items-center gap-4
+         w-[700px] h-[100px] py-16">
+        <!--upload-btn-->
+        <button class="bg-theme w-[170px] h-[70px] rounded-lg font-default
+          font-semibold text-sm text-dark-ink cursor-pointer hover:bg-hover
+          active:scale-95 transition-all ease-in-out duration-240">
+          UPLOAD
+        </button>
+
+        <!--clear-btn-->
+         <button class="bg-theme w-[170px] h-[70px] rounded-lg font-default
+          font-semibold text-sm text-dark-ink cursor-pointer hover:bg-hover
+          active:scale-95 transition-all ease-in-out duration-240">
+          CLEAR
+        </button>
+      </div>
+
+      <!--drag&drop-->
+      <div class="w-[700px] h-[100px]  py-4 border border-dashed
+        border-dashed-border rounded-[24px] flex justify-center align-center
+        items-center hover:bg-hover hover:border-transparent active:scale-95
+        transition-all ease-in-out duration-240">
+        <p class="font-default text-sm text-dark-ink">
+        Drag & Drop Your Files Here
+        </p>
+      </div>
+    </div>
+
+    <div class="w-[380px] h-[160px] bg-primary border border-border
+      rounded-lg">
+      <table>
+      </table>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

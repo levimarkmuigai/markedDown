@@ -8,11 +8,11 @@
 
   "scripts": {
 
-    "dev": "tsx src/main.ts",
+    "dev": "vite",
 
-    "build": "tsc",
+    "build": "vite build",
 
-    "watch": "tsx watch src/main.js"
+    "watch": "vite preview"
 
   },
 
