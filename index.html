@@ -35,22 +35,26 @@
       <div class="flex flex-row justify-center items-center gap-4
          w-[700px] h-[100px] py-16">
         <!--upload-btn-->
-        <button class="bg-theme w-[170px] h-[70px] rounded-lg font-default
+        <button id="upload-btn"
+          class="bg-theme w-[170px] h-[70px] rounded-lg font-default
           font-semibold text-sm text-dark-ink cursor-pointer hover:bg-hover
           active:scale-95 transition-all ease-in-out duration-240">
-          UPLOAD
+          <i data-lucide="circle-plus"></i>UPLOAD
         </button>
 
         <!--clear-btn-->
-         <button class="bg-theme w-[170px] h-[70px] rounded-lg font-default
+         <button id="clear-btn"
+          class="bg-theme w-[170px] h-[70px] rounded-lg font-default
           font-semibold text-sm text-dark-ink cursor-pointer hover:bg-hover
-          active:scale-95 transition-all ease-in-out duration-240">
-          CLEAR
+          active:scale-95 transition-all ease-in-out duration-240
+          flex items-center justify-center gap-2">
+          <i data-lucide="circle-x"></i>CLEAR
         </button>
       </div>
 
       <!--drag&drop-->
-      <div class="w-[700px] h-[100px]  py-4 border border-dashed
+      <div id="drop-zone"
+        class="w-[700px] h-[100px]  py-4 border border-dashed
         border-dashed-border rounded-[24px] flex justify-center align-center
         items-center hover:bg-hover hover:border-transparent active:scale-95
         transition-all ease-in-out duration-240">
@@ -65,6 +69,6 @@
       <table>
       </table>
     </div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="src/main.ts"></script>
   </body>
 </html>
