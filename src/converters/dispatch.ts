@@ -35,7 +35,7 @@ export async function dispatch(input: Input): Promise<Outcome> {
         () => convertImage(input.file)
       );
       logger.info(
-        `image -> markdown took: ${imageResult.outcome}ms`);
+        `image -> markdown took: ${imageResult.durationMs}ms`);
       return imageResult.outcome;
     };
 

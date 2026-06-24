@@ -1,8 +1,10 @@
-import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import { PDFDocumentProxy, TextItem } from "pdfjs-dist/types/src/display/api";
 import TurndownService from "turndown";
 import { Outcome } from "../types/index";
 import { logger } from "../utils/logger";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 const CONCURRENCY_LIMIT = 15;
 const turndownService = new TurndownService();
@@ -11,7 +13,7 @@ export async function convertPdf(file: File): Promise<Outcome> {
   try {
     const buffer = await file.arrayBuffer();
 
-    const pdfDocument = await getDocument({ data: new Uint8Array(buffer) })
+    const pdfDocument = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) })
       .promise;
 
     const pageNumbers = Array.from({ length: pdfDocument.numPages },

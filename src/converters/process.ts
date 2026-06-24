@@ -1,6 +1,6 @@
 import { BatchResult } from "../types/index";
 import { detectFileType } from "./detect";
-import { dispatch } from "./dispatcher";
+import { dispatch } from "./dispatch";
 
 export async function processor(files: File[]): Promise<BatchResult> {
   if (files.length === 0) {
