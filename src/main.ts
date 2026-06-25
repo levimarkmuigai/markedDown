@@ -1,11 +1,9 @@
-import {
-  CloudUpload, CircleX, CirclePlus, Check, Loader, Download,
-  createIcons
-} from "lucide";
 import { qs } from "./utils/dom";
 import { initDropzone } from "./ui/dropzone";
 import { processor } from "./converters/process";
-import { logger } from "./utils/logger";
+import { pendingRow } from "./ui/results";
+import { hydrateIcons } from "./utils/icons";
+
 
 
 const elements = {
@@ -14,11 +12,20 @@ const elements = {
   dropZone: qs<HTMLDivElement>("#drop-zone"),
 };
 
-createIcons({
-  icons: { CloudUpload, CircleX, CirclePlus, Check, Loader, Download }
-});
+const resultDiv = qs<HTMLDivElement>("#result-div");
+
+hydrateIcons();
 
 initDropzone(elements, async (files) => {
-  const outcomes = processor(files);
+  const resolver = files.map(f => pendingRow(resultDiv, f.name));
+  hydrateIcons();
+
+  const batchResults = await processor(files);
+
+  batchResults.outcomes.forEach(
+    (outcomes, i) => resolver[i](outcomes)
+  );
+
+  hydrateIcons();
 });
-logger.debug("initDropzone started");
+
