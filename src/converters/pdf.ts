@@ -13,7 +13,8 @@ export async function convertPdf(file: File): Promise<Outcome> {
   try {
     const buffer = await file.arrayBuffer();
 
-    const pdfDocument = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) })
+    const pdfDocument = await pdfjsLib
+      .getDocument({ data: new Uint8Array(buffer) })
       .promise;
 
     const pageNumbers = Array.from({ length: pdfDocument.numPages },
